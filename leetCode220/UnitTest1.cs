@@ -91,13 +91,12 @@ namespace leetCode220
                 return false;
             }
 
-            var set = new HashSet<int>();
+            var set = new HashSet<int>(new DiffEqualityComparer(t));
             for (int i = 0; i < nums.Length; i++)
             {
-                var diffMatch = i > 0 && Math.Abs(nums[i] - nums[i - 1]) == t;
-                var withoutSameElement = !set.Add(nums[i]);
+                var r = nums[i];
 
-                if (diffMatch || withoutSameElement)
+                if (!set.Add(nums[i]))
                 {
                     return true;
                 }
@@ -106,6 +105,26 @@ namespace leetCode220
             }
 
             return false;
+        }
+    }
+
+    internal class DiffEqualityComparer : IEqualityComparer<int>
+    {
+        private readonly int _t;
+
+        public DiffEqualityComparer(int t)
+        {
+            this._t = t;
+        }
+
+        public bool Equals(int x, int y)
+        {
+            return Math.Abs(x - y) == this._t;
+        }
+
+        public int GetHashCode(int obj)
+        {
+            return 0;
         }
     }
 }
