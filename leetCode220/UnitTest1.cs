@@ -6,6 +6,7 @@ namespace leetCode220
     [TestClass]
     public class UnitTest1
     {
+        [TestCategory("validation")]
         [TestMethod]
         public void k_is_0_should_return_false()
         {
@@ -13,6 +14,7 @@ namespace leetCode220
             ShouldBeFalse(nums, 0, 0);
         }
 
+        [TestCategory("validation")]
         [TestMethod]
         public void nums_length_less_than_2_should_return_false()
         {
@@ -20,6 +22,7 @@ namespace leetCode220
             ShouldBeFalse(nums, 1, 1);
         }
 
+        [TestCategory("t is 0")]
         [TestMethod]
         public void when_t_is_0_and_k_is_1_nums_5_5_should_return_true()
         {
@@ -27,6 +30,7 @@ namespace leetCode220
             ShouldBeTrue(nums, 1, 0);
         }
 
+        [TestCategory("t is 0")]
         [TestMethod]
         public void when_t_is_0_and_k_is_1_nums_5_6_5_should_return_false()
         {
