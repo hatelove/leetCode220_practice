@@ -13,6 +13,13 @@ namespace leetCode220
             ShouldBeFalse(nums, 0, 0);
         }
 
+        [TestMethod]
+        public void nums_length_less_than_2_should_return_false()
+        {
+            var nums = new int[] { 9 };
+            ShouldBeFalse(nums, 1, 1);
+        }
+
         private static void ShouldBeFalse(int[] nums, int k, int t)
         {
             Assert.IsFalse(new Solution().ContainsNearbyAlmostDuplicate(nums, k, t));
@@ -32,7 +39,7 @@ namespace leetCode220
         /// <returns></returns>
         public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t)
         {
-            if (k == 0)
+            if (k == 0 || nums.Length < 2)
             {
                 return false;
             }
