@@ -29,6 +29,11 @@ namespace leetCode220
         /// <returns></returns>
         public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t)
         {
+            if (k == 0)
+            {
+                return false;
+            }
+
             throw new NotImplementedException();
         }
     }
