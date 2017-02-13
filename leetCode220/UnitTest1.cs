@@ -28,6 +28,13 @@ namespace leetCode220
             ShouldBeTrue(nums, 1, 0);
         }
 
+        [TestMethod]
+        public void when_t_is_0_and_k_is_1_nums_5_6_5_should_return_false()
+        {
+            var nums = new int[] { 5, 6, 5 };
+            ShouldBeFalse(nums, 1, 0);
+        }
+
         private void ShouldBeTrue(int[] nums, int k, int t)
         {
             Assert.IsTrue(new Solution().ContainsNearbyAlmostDuplicate(nums, k, t));
