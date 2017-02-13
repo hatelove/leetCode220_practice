@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace leetCode220
@@ -87,12 +87,13 @@ namespace leetCode220
             var set = new HashSet<int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                if (i > 0 && Math.Abs(nums[i] - nums[i - 1]) == t)
+                var diffMatch = i > 0 && Math.Abs(nums[i] - nums[i - 1]) == t;
+                var withoutSameElement = !set.Add(nums[i]);
+
+                if (diffMatch || withoutSameElement)
                 {
                     return true;
                 }
-
-                if (!set.Add(nums[i])) return true;
 
                 if (i >= k) set.Remove(nums[i - k]);
             }
