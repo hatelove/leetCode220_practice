@@ -17,10 +17,7 @@ namespace leetCode220
         /// <returns></returns>
         public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t)
         {
-            if (k == 0)
-            {
-                return false;
-            }
+            if (k == 0) return false;
 
             var orderByNum = nums.Select((x, index) => Tuple.Create(index, x))
                 .OrderBy(x => x.Item2).ToList();
