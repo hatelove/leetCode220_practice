@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace leetCode220
 {
@@ -23,8 +24,8 @@ namespace leetCode220
         [TestMethod]
         public void when_t_is_0_and_k_is_1_nums_5_5_should_return_true()
         {
-            var nums = new int[] {5, 5};
-            ShouldBeTrue(nums, 1, 0);   
+            var nums = new int[] { 5, 5 };
+            ShouldBeTrue(nums, 1, 0);
         }
 
         private void ShouldBeTrue(int[] nums, int k, int t)
@@ -54,6 +55,12 @@ namespace leetCode220
             if (k == 0 || nums.Length < 2)
             {
                 return false;
+            }
+
+            var set = new HashSet<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!set.Add(nums[i])) return true;
             }
 
             throw new NotImplementedException();
