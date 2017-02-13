@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace leetCode220
 {
@@ -10,8 +10,11 @@ namespace leetCode220
         public void k_is_0_should_return_false()
         {
             var nums = new int[] { 9 };
-            var k = 0;
-            var t = 0;
+            ShouldBeFalse(nums, 0, 0);
+        }
+
+        private static void ShouldBeFalse(int[] nums, int k, int t)
+        {
             Assert.IsFalse(new Solution().ContainsNearbyAlmostDuplicate(nums, k, t));
         }
     }
