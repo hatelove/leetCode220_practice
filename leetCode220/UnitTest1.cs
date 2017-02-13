@@ -59,7 +59,7 @@ namespace leetCode220
         public void when_t_is_2_and_k_is_2_nums_6_5_4_should_return_true()
         {
             var nums = new int[] { 6, 5, 4 };
-            ShouldBeTrue(nums, 1, 2);
+            ShouldBeTrue(nums, 2, 2);
         }
 
         private void ShouldBeTrue(int[] nums, int k, int t)
