@@ -26,53 +26,31 @@ namespace leetCode220
                 .OrderBy(x => x.Item2).ToList();
 
             var list = new List<int>();
-            for (int i = 0; i < orderByNum.Count; i++)
+            list.Add(orderByNum[0].Item2);
+
+            for (int i = 1; i < orderByNum.Count; i++)
             {
                 list.Add(orderByNum[i].Item2);
 
-                if (i > 0)
+                var counter = 1;
+                while ((i - counter) >= 0)
                 {
-                    //single
-                    var counter = 1;
-                    while ((i - counter) >= 0)
+                    var diffValue = (long)list[i] - (long)list[i - counter];
+                    if (diffValue > t)
                     {
-                        var diffValue = (long)list[i] - (long)list[i - counter];
-                        if (diffValue > t)
-                        {
-                            break;
-                        }
-
-                        var diffIndex = Math.Abs(orderByNum[i].Item1 - orderByNum[i - counter].Item1);
-                        if (diffIndex <= k)
-                        {
-                            return true;
-                        }
-                        counter++;
+                        break;
                     }
+
+                    var diffIndex = Math.Abs(orderByNum[i].Item1 - orderByNum[i - counter].Item1);
+                    if (diffIndex <= k)
+                    {
+                        return true;
+                    }
+                    counter++;
                 }
             }
 
             return false;
-        }
-    }
-
-    internal class DiffEqualityComparer : IEqualityComparer<int>
-    {
-        private readonly int _t;
-
-        public DiffEqualityComparer(int t)
-        {
-            this._t = t;
-        }
-
-        public bool Equals(int x, int y)
-        {
-            return Math.Abs((long)x - (long)y) <= this._t;
-        }
-
-        public int GetHashCode(int obj)
-        {
-            return 0;
         }
     }
 }
