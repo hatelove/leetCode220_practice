@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
 namespace leetCode220
@@ -86,7 +87,7 @@ namespace leetCode220
             var set = new HashSet<int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                if (i > 0 && (nums[i] - nums[i - 1]) == t)
+                if (i > 0 && Math.Abs(nums[i] - nums[i - 1]) == t)
                 {
                     return true;
                 }
