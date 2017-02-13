@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace leetCode220
 {
@@ -69,6 +70,13 @@ namespace leetCode220
             ShouldBeTrue(nums, 2, 1);
         }
 
+        [TestMethod]
+        public void MyTestMethod_()
+        {
+            var nums = new int[] { 20, 11, 14, 30, 17, 18 };
+            ShouldBeTrue(nums, 1, 1);
+        }
+
         private void ShouldBeTrue(int[] nums, int k, int t)
         {
             Assert.IsTrue(new Solution().ContainsNearbyAlmostDuplicate(nums, k, t));
@@ -98,15 +106,44 @@ namespace leetCode220
                 return false;
             }
 
-            var set = new HashSet<int>(new DiffEqualityComparer(t));
+            var orderByNum = nums.Select((x, index) => Tuple.Create(index, x))
+                .OrderBy(x => x.Item2).ToList();
+
+            //var set = new HashSet<int>(new DiffEqualityComparer(t));
             for (int i = 0; i < nums.Length; i++)
             {
-                if (!set.Add(nums[i]))
+                var item = nums[i];
+
+                var indexOfOrderByNum = orderByNum.FindIndex(x => x.Item2 == item);
+
+                var counter = 1;
+                var current = orderByNum[indexOfOrderByNum].Item2;
+                var currentIndex = orderByNum[indexOfOrderByNum].Item1;
+
+                while ((indexOfOrderByNum + counter) <= orderByNum.Count - 1)
                 {
-                    return true;
+                    //r
+                    var right = orderByNum[indexOfOrderByNum + counter].Item2;
+                    var rightIndex = orderByNum[indexOfOrderByNum + counter].Item1;
+
+                    if ((right - current) <= t && Math.Abs(rightIndex - currentIndex) <= k)
+                    {
+                        return true;
+                    }
+                    counter++;
                 }
 
-                if (i >= k) set.Remove(nums[i - k]);
+                counter = 1;
+                while ((indexOfOrderByNum - counter) >= 0)
+                {
+                    var left = orderByNum[indexOfOrderByNum - counter].Item2;
+                    var leftIndex = orderByNum[indexOfOrderByNum - counter].Item1;
+                    if ((current - left) <= t && Math.Abs(leftIndex - currentIndex) <= k)
+                    {
+                        return true;
+                    }
+                    counter++;
+                }
             }
 
             return false;
