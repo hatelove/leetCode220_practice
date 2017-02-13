@@ -94,8 +94,6 @@ namespace leetCode220
             var set = new HashSet<int>(new DiffEqualityComparer(t));
             for (int i = 0; i < nums.Length; i++)
             {
-                var r = nums[i];
-
                 if (!set.Add(nums[i]))
                 {
                     return true;
