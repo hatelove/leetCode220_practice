@@ -62,6 +62,13 @@ namespace leetCode220
             ShouldBeTrue(nums, 2, 2);
         }
 
+        [TestMethod]
+        public void nums_1_3_1_k_is_2_t_is_1_should_be_true()
+        {
+            var nums = new int[] { 1, 3, 1 };
+            ShouldBeTrue(nums, 2, 1);
+        }
+
         private void ShouldBeTrue(int[] nums, int k, int t)
         {
             Assert.IsTrue(new Solution().ContainsNearbyAlmostDuplicate(nums, k, t));
@@ -117,7 +124,7 @@ namespace leetCode220
 
         public bool Equals(int x, int y)
         {
-            return Math.Abs(x - y) == this._t;
+            return Math.Abs((long)x - (long)y) <= this._t;
         }
 
         public int GetHashCode(int obj)
