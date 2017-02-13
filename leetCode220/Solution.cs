@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace leetCode220
 {
@@ -32,7 +30,7 @@ namespace leetCode220
             {
                 var item = nums[i];
 
-                var indexOfOrderByNum = orderByNum.FindIndex(x => x.Item2 == item);
+                var indexOfOrderByNum = orderByNum.FindLastIndex(x => x.Item2 == item);
 
                 var counter = 1;
                 var current = (long)orderByNum[indexOfOrderByNum].Item2;
@@ -40,14 +38,20 @@ namespace leetCode220
 
                 while ((indexOfOrderByNum + counter) <= orderByNum.Count - 1)
                 {
-                    //r
                     var right = (long)orderByNum[indexOfOrderByNum + counter].Item2;
-                    var rightIndex = orderByNum[indexOfOrderByNum + counter].Item1;
 
+                    //r
+                    if (right - current > t)
+                    {
+                        break;
+                    }
+
+                    var rightIndex = orderByNum[indexOfOrderByNum + counter].Item1;
                     if ((right - current) <= t && Math.Abs(rightIndex - currentIndex) <= k)
                     {
                         return true;
                     }
+
                     counter++;
                 }
 
@@ -55,11 +59,18 @@ namespace leetCode220
                 while ((indexOfOrderByNum - counter) >= 0)
                 {
                     var left = (long)orderByNum[indexOfOrderByNum - counter].Item2;
+
+                    if (current - left > t)
+                    {
+                        break;
+                    }
+
                     var leftIndex = orderByNum[indexOfOrderByNum - counter].Item1;
                     if ((current - left) <= t && Math.Abs(leftIndex - currentIndex) <= k)
                     {
                         return true;
                     }
+
                     counter++;
                 }
 
