@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace leetCode220
 {
@@ -80,8 +77,15 @@ namespace leetCode220
         [TestMethod]
         public void nums_1_0_1_1_k_is_1_t_is_0()
         {
-            var nums = new int[] {1, 0, 1, 1};
+            var nums = new int[] { 1, 0, 1, 1 };
             ShouldBeTrue(nums, 1, 0);
+        }
+
+        [TestMethod]
+        public void MyTestMethod_2()
+        {
+            var nums = new int[] { 0, 10, 22, 15, 0, 5, 22, 12, 1, 5 };
+            ShouldBeFalse(nums, 3, 3);
         }
 
         private void ShouldBeTrue(int[] nums, int k, int t)
