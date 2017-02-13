@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 
 namespace leetCode220
@@ -59,7 +58,7 @@ namespace leetCode220
         /// <returns></returns>
         public bool ContainsNearbyAlmostDuplicate(int[] nums, int k, int t)
         {
-            if (k == 0 || nums.Length < 2)
+            if (k == 0)
             {
                 return false;
             }
