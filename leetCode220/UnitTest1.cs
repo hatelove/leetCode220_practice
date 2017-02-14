@@ -68,21 +68,23 @@ namespace leetCode220
         }
 
         [TestMethod]
-        public void MyTestMethod_()
+        public void nums_20_11_14_30_17_18_k_is_1_tis_1_should_return_true()
         {
             var nums = new int[] { 20, 11, 14, 30, 17, 18 };
             ShouldBeTrue(nums, 1, 1);
         }
 
+        [TestCategory("check find value index logic")]
         [TestMethod]
-        public void nums_1_0_1_1_k_is_1_t_is_0()
+        public void nums_1_0_1_1_k_is_1_t_is_0_should_return_true()
         {
             var nums = new int[] { 1, 0, 1, 1 };
             ShouldBeTrue(nums, 1, 0);
         }
 
+        [TestCategory("match t but not match k, has duplicate num")]
         [TestMethod]
-        public void MyTestMethod_2()
+        public void nums_0_10_22_15_0_5_22_12_1_5_k_is_3_t_is_3_should_return_false()
         {
             var nums = new int[] { 0, 10, 22, 15, 0, 5, 22, 12, 1, 5 };
             ShouldBeFalse(nums, 3, 3);
