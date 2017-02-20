@@ -68,6 +68,13 @@ namespace leetCode220
         }
 
         [TestMethod]
+        public void nums_intMaxValue_should_not_throw_overflowException()
+        {
+            var nums = new int[] { int.MaxValue, -1 };
+            ShouldBeFalse(nums, 1, 1);
+        }
+
+        [TestMethod]
         public void nums_20_11_14_30_17_18_k_is_1_tis_1_should_return_true()
         {
             var nums = new int[] { 20, 11, 14, 30, 17, 18 };
